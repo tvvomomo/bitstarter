@@ -6,8 +6,12 @@ var fs=require('fs');
 
 app.get('/', function(request, response) {
   fs.readFileSync('index.html',function(err,data){
-	response.send(data);
-  }  
+  	if(err){
+  		console.error(err);
+  	}else{
+  		response.send(data);
+  	}
+  };
 });
 
 var port = process.env.PORT || 5000;
