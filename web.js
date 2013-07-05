@@ -7,9 +7,9 @@ var fs=require('fs');
 app.get('/', function(request, response) {
   fs.readFileSync('index.html',function(err,data){
   	if(err){
-  		console.error(err);
+  		throw err;
   	}else{
-  		response.send(data);
+  		response.send(data.toString('utf-8'));
   	}
   });
 });
